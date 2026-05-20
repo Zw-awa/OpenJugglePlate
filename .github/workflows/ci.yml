@@ -44,6 +44,7 @@ jobs:
             ".github/ISSUE_TEMPLATE/feature-request.yml"
             ".github/ISSUE_TEMPLATE/question-support.yml"
             ".github/ISSUE_TEMPLATE/config.yml"
+            ".github/workflows/pages.yml"
             "hardware/README.md"
             "hardware/README.zh-CN.md"
             "hardware/README.zh-TW.md"
@@ -53,6 +54,8 @@ jobs:
             "software/README.md"
             "software/README.zh-CN.md"
             "software/README.zh-TW.md"
+            "site/index.html"
+            "site/styles.css"
           )
           for file in "${required[@]}"; do
             test -f "$file"
