@@ -1,0 +1,45 @@
+name: Feature Request / 功能建议
+description: Propose a new capability or improvement for the project. / 提出新的能力或改进建议。
+title: "[Feature]: "
+labels:
+  - enhancement
+  - triage
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Target area / 目标范围
+      description: Which area would this change affect most? / 这项改动主要影响哪个部分？
+      options:
+        - Hardware / CAD
+        - Firmware / STM32
+        - Software / Linux SBC
+        - Vision / Control
+        - Documentation
+        - CI / Repository setup
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal / 目标
+      description: What do you want to add or improve? / 你想新增或改进什么？
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why it matters / 为什么值得做
+      description: Why is this improvement useful for the project? / 为什么这个改动对项目有价值？
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed approach / 建议方案
+      description: If you already have an idea, describe the approach briefly. / 如果你已经有思路，可以在这里简单说明。
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered / 备选方案或权衡
+      description: Mention any alternatives or tradeoffs if relevant. / 如果有备选方案或取舍，也可以写在这里。

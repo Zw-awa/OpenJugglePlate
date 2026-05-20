@@ -1,0 +1,12 @@
+# Test output
+test-results/
+test-output/
+
+# Local development configs
+local.config.json
+dev.config.json
+
+_site/
+.jekyll-cache/
+.sass-cache/
+CHANGELOG.md

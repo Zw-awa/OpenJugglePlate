@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  repository-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate required files
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            "README.md"
+            "README.zh-CN.md"
+            "README.zh-TW.md"
+            "CODE_OF_CONDUCT.md"
+            "CODE_OF_CONDUCT.zh-CN.md"
+            "CODE_OF_CONDUCT.zh-TW.md"
+            "CONTRIBUTING.md"
+            "CONTRIBUTING.zh-CN.md"
+            "CONTRIBUTING.zh-TW.md"
+            "LICENSE"
+            "NOTICE"
+            "SECURITY.md"
+            "SECURITY.zh-CN.md"
+            "SECURITY.zh-TW.md"
+            "SUPPORT.md"
+            "SUPPORT.zh-CN.md"
+            "SUPPORT.zh-TW.md"
+            ".github/CODEOWNERS"
+            ".github/pull_request_template.md"
+            ".github/ISSUE_TEMPLATE/bug-report.yml"
+            ".github/ISSUE_TEMPLATE/feature-request.yml"
+            ".github/ISSUE_TEMPLATE/question-support.yml"
+            ".github/ISSUE_TEMPLATE/config.yml"
+            "hardware/README.md"
+            "hardware/README.zh-CN.md"
+            "hardware/README.zh-TW.md"
+            "firmware/README.md"
+            "firmware/README.zh-CN.md"
+            "firmware/README.zh-TW.md"
+            "software/README.md"
+            "software/README.zh-CN.md"
+            "software/README.zh-TW.md"
+          )
+          for file in "${required[@]}"; do
+            test -f "$file"
+          done
+
+      - name: Validate issue template YAML
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: .github/ISSUE_TEMPLATE .github/workflows
+
+      - name: Check markdown links
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: "yes"
+          config-file: .github/markdown-link-check-config.json

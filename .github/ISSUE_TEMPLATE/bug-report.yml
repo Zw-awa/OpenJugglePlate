@@ -1,0 +1,53 @@
+name: Bug Report / Bug 反馈
+description: Report a reproducible bug in hardware docs, firmware, software, or repository setup. / 反馈一个可复现的问题。
+title: "[Bug]: "
+labels:
+  - bug
+  - triage
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area / 影响范围
+      description: Which part of the project is affected? / 问题主要影响哪个部分？
+      options:
+        - Hardware / CAD
+        - Firmware / STM32
+        - Software / Linux SBC
+        - Vision / Control
+        - Documentation
+        - CI / Repository setup
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary / 问题摘要
+      description: What is going wrong? / 现在具体出现了什么问题？
+      placeholder: Describe the bug clearly and concretely. / 请清楚、具体地描述问题。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / 复现步骤
+      description: List the steps or setup needed to reproduce the issue. / 请列出复现所需步骤或环境。
+      placeholder: |
+        1. Go to ...
+        2. Run ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior / 预期行为
+      description: What did you expect to happen? / 你原本预期应该发生什么？
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Logs, images, or extra context / 日志、图片或补充上下文
+      description: Paste logs, add screenshots, or describe the hardware/software context. / 可附上日志、截图，或补充说明相关硬件/软件环境。
+      render: shell
