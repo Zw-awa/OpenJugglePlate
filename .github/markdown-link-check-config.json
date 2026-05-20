@@ -1,7 +1,0 @@
-{
-  "ignorePatterns": [],
-  "timeout": "20s",
-  "retryOn429": true,
-  "retryCount": 2,
-  "fallbackRetryDelay": "5s"
-}

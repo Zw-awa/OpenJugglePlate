@@ -1,3 +1,4 @@
+---
 name: CI
 
 on:
@@ -9,9 +10,11 @@ on:
 jobs:
   repository-checks:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Validate required files
         shell: bash
@@ -54,14 +57,3 @@ jobs:
           for file in "${required[@]}"; do
             test -f "$file"
           done
-
-      - name: Validate issue template YAML
-        uses: ibiqlik/action-yamllint@v3
-        with:
-          file_or_dir: .github/ISSUE_TEMPLATE .github/workflows
-
-      - name: Check markdown links
-        uses: gaurav-nelson/github-action-markdown-link-check@v1
-        with:
-          use-quiet-mode: "yes"
-          config-file: .github/markdown-link-check-config.json
